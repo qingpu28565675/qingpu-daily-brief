@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>8/11（二）｜青埔領航 · 每日房市簡報</title>
+<meta name="description" content="青埔領航不動產每日彙整的房市、青埔在地、航空城與租賃新聞。">
+<meta property="og:title" content="8/11（二）｜青埔領航 · 每日房市簡報">
+<meta property="og:description" content="今日房市重點一次看">
+<meta property="og:type" content="article">
+<style>
+  :root { --brand: #173765; --bg: #f5f6f8; --card: #fff; --text: #1b1f24; --muted: #6b7280; --line: #e6e8ec; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #14171c; --card: #1c2027; --text: #e8eaed; --muted: #9aa1ab; --line: #2c313a; }
+  }
+  /* 字級一律用 rem，縮放時由 html 的 font-size 一次帶動全部（見底部字級切換）。
+     預設 19px＝「中」，比一般網頁大一級：主管年紀大，不能預期他們會自己去按放大。
+     嫌大的人按「小」(16px) 就回到一般大小，選擇記在 localStorage。 */
+  html { font-size: 19px; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "PingFang TC", sans-serif;
+    line-height: 1.75; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 0 0 48px; }
+  header { background: var(--brand); color: #fff; padding: 28px 20px 24px; }
+  header .kicker { font-size: .75rem; letter-spacing: .18em; opacity: .75; }
+  header h1 { margin: 6px 0 0; font-size: 1.625rem; }
+  main { background: var(--card); padding: 8px 20px 24px; }
+  .sec { padding: 18px 0 4px; border-bottom: 1px solid var(--line); }
+  .sec:last-of-type { border-bottom: none; }
+  .sec h2 { font-size: 1rem; color: var(--brand); margin: 0 0 10px; letter-spacing: .04em; }
+  @media (prefers-color-scheme: dark) { .sec h2 { color: #8fb0e0; } }
+  .items { list-style: none; margin: 0; padding: 0; }
+  .item { display: flex; gap: 10px; padding: 10px 0; }
+  .num { flex: 0 0 1.5rem; height: 1.5rem; border-radius: 6px; background: var(--bg);
+    color: var(--muted); font-size: .8125rem; display: grid; place-items: center; margin-top: 4px; }
+  .title { color: inherit; text-decoration: none; font-weight: 600; font-size: 1.0625rem; }
+  .title:hover { text-decoration: underline; }
+  .detail, .note { margin: 6px 0 0; font-size: .9375rem; color: var(--muted); }
+  .note::before { content: "💡 "; }
+  .view { margin: 20px 0 0; padding: 16px 18px; border-left: 4px solid var(--brand);
+    background: rgba(23,55,101,.05); border-radius: 0 10px 10px 0; }
+  @media (prefers-color-scheme: dark) { .view { background: rgba(143,176,224,.08); } }
+  .view h2 { font-size: 1rem; margin: 0 0 8px; color: var(--brand); }
+  @media (prefers-color-scheme: dark) { .view h2 { color: #8fb0e0; } }
+  .view p { margin: 0; font-size: 1rem; }
+  .share { position: sticky; bottom: 0; background: var(--card); border-top: 1px solid var(--line);
+    padding: 12px 20px calc(12px + env(safe-area-inset-bottom)); display: flex; gap: 10px;
+    align-items: center; flex-wrap: wrap; }
+  .share button { flex: 1; border: 1px solid var(--line); background: var(--bg); color: var(--text);
+    border-radius: 10px; padding: 12px 8px; font-size: 15px; font-weight: 600; cursor: pointer;
+    font-family: inherit; }
+  .share button.primary { background: var(--brand); color: #fff; border-color: var(--brand); }
+  .share button:active { opacity: .8; }
+  /* 字級切換自己不跟著縮放（用 px），否則選「小」之後按鈕會小到點不到 */
+  /* flex-basis:100% 自己佔滿一列；不能用 width:100%，在 flex 容器裡會連同 gap 一起
+     把整頁撐寬，害內文右側被切掉（2026-08-07 截圖驗出） */
+  .fs { display: flex; align-items: center; gap: 6px; flex: 1 0 100%; min-width: 0; }
+  .fs .lbl { font-size: 14px; color: var(--muted); flex: 0 0 auto; }
+  .fs button { flex: 1 1 0; min-width: 0; font-size: 15px; padding: 10px 6px; }
+  .fs button[aria-pressed="true"] { background: var(--brand); color: #fff; border-color: var(--brand); }
+  .fs button:nth-of-type(2) { font-size: 17px; }
+  .fs button:nth-of-type(3) { font-size: 20px; }
+  footer { padding: 20px; font-size: .8125rem; color: var(--muted); text-align: center; }
+  footer a { color: inherit; }
+</style>
+<script>
+/* 先套用記住的字級再畫面，避免載入後字體跳一下 */
+(function () {
+  try {
+    var px = parseFloat(localStorage.getItem('qp-fs'));
+    if (px >= 14 && px <= 24) document.documentElement.style.fontSize = px + 'px';
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">QINGPU DAILY BRIEF</div>
+    <h1>8/11（二）　早安簡報</h1>
+  </header>
+  <main>
+    
+      <section class="sec">
+        <h2><span aria-hidden="true">🏠</span> 房市焦點</h2>
+        <ul class="items">
+        <li class="item">
+          <span class="num">1</span>
+          <div class="body">
+            <a class="title" href="https://news.google.com/rss/articles/CBMif0FVX3lxTE1OV0RIbE5pd0haajB5Yms1R05XVzl2RGtQTjZnTV9rNUFIX3dzRFZBV1duZk9ZN1FvNzF3eUFDUmpZSnBJUERVekhwVzZNd0F3RnpJRGVsMkFFa0VSYUt4Tkd1WkhkMFFCR0NlbWxJcTRZMFA5SUhPZVFTN0k5TTg?oc=5" target="_blank" rel="noopener noreferrer">央行公布房市管制三大新動向，政策方向漸趨明確</a>
+            
+            <p class="note">掌握央行最新政策思路，為客戶銷售話術預做準備</p>
+          </div>
+        </li>
+        <li class="item">
+          <span class="num">2</span>
+          <div class="body">
+            <a class="title" href="https://news.google.com/rss/articles/CBMia0FVX3lxTE53aGJNM3hyd2FnMmxrSE1KTDNyUEI0Y01TNGpyNjNsZ0R1M0dYTjE1LUYtQmJnVDdJRjBOd0hCV1NFcVhsTTc1anV3N0czd3hzd05rT3FVVmI0ekh6WjVCaVBmVnlrQTM0NGJv?oc=5" target="_blank" rel="noopener noreferrer">央行澄清青安貸款獨立運作，不納入信用管制規範</a>
+            
+            <p class="note">自住客融資管道不受新規影響，業務宣傳上有利</p>
+          </div>
+        </li>
+        <li class="item">
+          <span class="num">3</span>
+          <div class="body">
+            <a class="title" href="https://news.google.com/rss/articles/CBMi1ANBVV95cUxPUW9HTzI1SlZYSnBaY0hBZmFKVEMyb0NnaW94NllENzIxcVFwTXVvZ19xR01FbEpCdTBhcGFmS2JCWlhQY2hiMmluMjloMlBfSWRYanRneFJ3NGNKemUzSWF1V2hGMWpFMHNvZkJTWGNlcGg0OGlydFUydHYtVWh3OS1rcXlERzlKaUFCM19VOVdubnVlM3ZrU3h3UWhSSU9SaVJOZ3R0V3NsVWowRHNoZUZRNDcwUEc2NUNNWLM9VVEvWXJGC0Z0azByRXIxRTFZSTJZaVlubDJaV1UxWW1SRU1ETTBOSFk0TW1KRmNtMWxjblI1YzJOdlpHNWxiR1Y0TDI5T2VYTjBZMjl1YjJSbGJIUmlZbXAyYkdSNWMzUm1iSEpoVnpReU1EWTJabEpGYm1FMk5qUjZSRmMyT0N0Vk1qQk5lRXBVVVRoT2RrOXRNMGR5VTJnd1lrSllNRzFpVta0ZheGNVVTBWTGQzQkhjMFpyTWxCd1VtWkdNemsxVkUwM2FGVkJWbFkyTVhSblVtRldWMjkzV1hjeFJGbDFURmhTTVZsNlJXdE5WRUZyVFhkV2VVMVZURmhOTWsxNlRuTlpWRlp1VG5kRWEwMVVWWGRaTWswNVRrcG5kV1J1VVd0RWFrMTNVMRCWVFRZNFJreG5SMll6VVhodVREbE5hblpRVGsxVFZFbE1NVGR5Vms5M2NrRlVibEJ3TW1WRk1FdEdSRTQyUTJWRFJGTmFWRmxzVWxobVowRkVUM1JCUkRGRVFWSlVSVlJRUVZNelpVRjNTVU4zZFhObFRqQTBabmg1ZUZObVNYQjNhVkJ3YjJgRFEyVlVkM2RIVkVGeFRVUTJSMEpCVFRKRVkyUkJkMFZVUVhkalNVZHBaMEpCU1V0Q1ZFUTBSbkI1YVcxMFlqTkRWekF3WWpKMmIzSklkMmxrUjBsdVFrSk5Ra0Z5UVhOQ1UzRjVkSEJsYkZCNWFHRjNZVzV6VVRad2IybFVhMnQzTWpsbFkyaGFWbVJYUkVKWmMydHhXbTlEUmpoTFVEQldSR0V4VVhsWFlVWk5abEowVTBkT1YwVkZSRkJYTVZoV1RrSkdNRlZXV1hkT2JrbEhUMGR2ZVU5V1JqTkVSbWgzVW10a1dWbFhkRXRMYzBVNVUycEJRMjl5VkVGUFNVMUhVWGRaTWswMFRtRjNkbG95U1hjMExtRm5TbkJ5YWpWdFoyZHNWMFF5U1cxV2FrMVhTbXhWVVQwOQ==" target="_blank" rel="noopener noreferrer">10年公債利率衝1.969%創2008年來新高，房貸成本上升壓力浮現</a>
+            
+            <p class="note">房貸利率走升已成定局，自住客延誤簽約將面臨更高成本</p>
+          </div>
+        </li></ul>
+      </section>
+      <section class="sec">
+        <h2><span aria-hidden="true">📍</span> 青埔在地</h2>
+        <ul class="items">
+        <li class="item">
+          <span class="num">1</span>
+          <div class="body">
+            <a class="title" href="https://news.google.com/rss/articles/CBMiU0FVX3lxTE1VR0hLS21wcVg5Y2ZYQ3NCdUpkcHppeEdMckM0Tjh4RlZkcDVEUlc0UFpCS1BYbXRUTUdXVEEzN1FGSHNkYzg3YTNYakhHa2tnZGxJ?oc=5" target="_blank" rel="noopener noreferrer">青埔置地廣場超越航高17公尺，國泰人壽承諾全力拆除改善</a>
+            
+            <p class="note">大型建案配合飛航安全執行，彰顯青埔管制規範落實力度</p>
+          </div>
+        </li>
+        <li class="item">
+          <span class="num">2</span>
+          <div class="body">
+            <a class="title" href="https://news.google.com/rss/articles/CBMijgFBVV95cUxOZTNZTEVMcE1ZNk0yNU44RnFuS0xKT0lsTXl2LXo5Vk52SnA5Wks2azI3VXlGVmJJbWRvcF9iNm5jTUF4SWZGOXVDaUlUZzlRMVlvNkZoelFFZHhNN1JkcWExTVpmUkhuR1pESmUwSjJQamVFZ2JDWTFRX0tWelhyTkFiNENNWmdXWWFEblZB?oc=5" target="_blank" rel="noopener noreferrer">青埔外溢效應實價驗證，A20興南與A21環北重劃區房價走勢浮現</a>
+            
+            <p class="note">掌握周邊重劃區漲幅數據，客戶資產配置宣傳更有說服力</p>
+          </div>
+        </li></ul>
+      </section>
+      <section class="sec">
+        <h2><span aria-hidden="true">✈️</span> 航空城</h2>
+        <ul class="items">
+        <li class="item">
+          <span class="num">1</span>
+          <div class="body">
+            <a class="title" href="https://news.google.com/rss/articles/CBMiZEFVX3lxTE41QUgyMTFrSkU0V2MxY0FwTkFfaVBjTzRaWms1U2I2V2lfWnVGZHdPMjRrSVdRVEgtcElIV3RuN1U2andwMVpudDFpUjFDSThUWHFOcEFMOUZOSXdRb2dXV1JXcm0?oc=5" target="_blank" rel="noopener noreferrer">航空城第11標區工程順利決標，預計11月啟動建設</a>
+            
+            <p class="note">航空城建設進度推進加速，區域發展題材升溫，地主投資信心回升</p>
+          </div>
+        </li>
+        <li class="item">
+          <span class="num">2</span>
+          <div class="body">
+            <a class="title" href="https://news.google.com/rss/articles/CBMiZEFVX3lxTE5TV1VETDNfVFp2WV9IdG5XdFV5aTJYTWhSOTZPX0hMNFBxY0dja3ZZSEZfLTgtM2o3VWU2NXRqaXpwNFpPVjF1Z3lfWjFkSW4xalR4eExwSUlPekRSZXp5MjdyWEw?oc=5" target="_blank" rel="noopener noreferrer">彰化高鐵養生村參考航空城新市鎮開發模式，填補長照需求</a>
+            
+            <p class="note">航空城開發模式成為全國標竿案例，凸顯青埔策略地位與產業影響力</p>
+          </div>
+        </li></ul>
+      </section>
+      <section class="sec">
+        <h2><span aria-hidden="true">🔑</span> 租賃・包租代管</h2>
+        <ul class="items">
+        <li class="item">
+          <span class="num">1</span>
+          <div class="body">
+            <a class="title" href="https://news.google.com/rss/articles/CBMiZkFVX3lxTFBhOHRBekxBZ3lvNlpCcDNvdkFIRXRCUHNwVU5GWFJKRjJTVDNIaFJ0cHZfMlVTMjN3SkNRdkxzTEhrVnlYNDh3WVh2MGwxVjJqN2ZjUnpJQlQ0NWctOHMybThyeW02QQ?oc=5" target="_blank" rel="noopener noreferrer">兆基集團財務危機爆發，6千戶社宅房東房客陷入轉銜風波</a>
+            
+            <p class="note">包租代管業者違約凸顯行業風險，房東客戶需強化風險防範意識</p>
+          </div>
+        </li>
+        <li class="item">
+          <span class="num">2</span>
+          <div class="body">
+            <a class="title" href="https://news.google.com/rss/articles/CBMiXEFVX3lxTFBGN1p4NGoxY1o4Vjc4MmhYR3JJcHNiSVg1RjBLQTN5T3EtbWNPa3M2UjlIekxPblN6bk1tSGJwQnlSSGI2dnQ1YjdFYnpxSGlxQU1lLU1vUEZQM2VI?oc=5" target="_blank" rel="noopener noreferrer">寄居蟹宣布退出社宅包租代管，6800多戶啟動轉銜機制</a>
+            
+            <p class="note">第二家大型代管業者出事，市場供給端不穩定，自主管理模式受矚目</p>
+          </div>
+        </li></ul>
+      </section>
+      <section class="sec">
+        <h2><span aria-hidden="true">🌏</span> 世界大事</h2>
+        <ul class="items">
+        <li class="item">
+          <span class="num">1</span>
+          <div class="body">
+            <a class="title" href="https://www.aljazeera.com/news/2026/8/10/wildfires-burn-across-indonesia-as-officials-cite-el-nino-as-a-cause?traffic_source=rss" target="_blank" rel="noopener noreferrer">印尼野火規模擴大，El Niño氣候現象為主要誘因</a>
+            <p class="detail">印尼正面臨十多年來最嚴重的野火季，數千名消防隊員與直升機投入滅火作業。官方認為El Niño天氣型態是主要誘因，導致該地降雨減少、乾季延長。野火造成的空氣汙染已波及鄰近東南亞國家，威脅區域經濟。</p>
+            <p class="note">全球氣候極端化推升商品價格走升，間接影響建築成本與房價基期</p>
+          </div>
+        </li>
+        <li class="item">
+          <span class="num">2</span>
+          <div class="body">
+            <a class="title" href="https://www.aljazeera.com/news/2026/8/10/trump-says-relationship-is-good-even-as-netanyahu-rejects-gaza-peace-plan?traffic_source=rss" target="_blank" rel="noopener noreferrer">美以領導人在加薩停火問題上立場分歧，地緣風險升溫</a>
+            <p class="detail">川普聲稱美以關係良好，但以色列總理納坦雅胡公開拒絕美國提出的加薩停火和平計畫。此舉凸顯美國對以色列的政治影響力有限，中東衝突短期內難有進展。區域局勢不穩定通常推升國際原油價格，進而拉高全球進口成本。</p>
+            <p class="note">中東地緣緊張局勢波動油價，進出口成本變化直接影響房市基本面</p>
+          </div>
+        </li></ul>
+      </section>
+      <section class="sec">
+        <h2><span aria-hidden="true">📈</span> 股市</h2>
+        <ul class="items">
+        <li class="item">
+          <span class="num">1</span>
+          <div class="body">
+            <a class="title" href="https://news.google.com/rss/articles/CBMiTkFVX3lxTE1Pamp1NTdnMWp4QV9HcERlMjR5UzJLQnpmbk13ZVl4T2JDZE5zbFQ1VDNqZldaWHV0MzNjdjhDbXk5dHJaQXl3WmlmRldQdw?oc=5" target="_blank" rel="noopener noreferrer">台積電7月營收創下歷史新高，年增44.7%，晶片需求強勁</a>
+            
+            <p class="note">台股旗艦股表現搶眼，法人投資情緒回暖，資金面對房市形成支撐</p>
+          </div>
+        </li>
+        <li class="item">
+          <span class="num">2</span>
+          <div class="body">
+            <a class="title" href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE5UbzNXRE1VcHluXzFOWHNuY3ZjWWxWMjVISC1FZXg3Nmd1eWR5aGZXUEpUYzc2NWtNNmdjNWdjMEN2aGxtTzJZcC1NakxzQW1UaTBpLTZhNEV2d9IBX0FVX3lxTE0xMmhJUUtNT3Q3NnphUkZpLUZJOGFXVTRTeFJVN3RwYU9qTm9hdGFzOE5kTWNBSmFZRkRRYlNURzhlVU0ySGN3Ry1uUlRLV3dhNm1mdEs5SEgyOTBJdlJZ?oc=5" target="_blank" rel="noopener noreferrer">荷莫茲海峽談判陷僵局，國際油價攀升5%，進口成本壓力浮現</a>
+            
+            <p class="note">國際油價反彈推升進口成本，建築營造與運輸費用承壓加重</p>
+          </div>
+        </li>
+        <li class="item">
+          <span class="num">3</span>
+          <div class="body">
+            <a class="title" href="https://news.google.com/rss/articles/CBMiU0FVX3lxTFBuZUp6bDF5OUFFeExCUTU0MTEwR1Jfa3BkNWo2RTB0RjBSczhuRnZ5d0FuUGdoWHl0aDluN3lvQkY0dUJjdlhHcFUwMjZnUzF2NFhF0gFYQVVfeXFMUC00cDRwNmRJU1BPTWZrMUxtcHFWMnBHQTh2YWhhTWwtc1R2UkdpbGlYTVVzVTN1dHpZWTNLMmttcGRKRTZZRkh5bU1MUTB0bWlRX09ZQ2R3dw?oc=5" target="_blank" rel="noopener noreferrer">主動式台股基金近月績效逾19%，超越被動指數表現</a>
+            
+            <p class="note">股市資金面活躍，散戶投資熱度升溫，資產配置動向牽動房市循環</p>
+          </div>
+        </li></ul>
+      </section>
+    <div class="view"><h2>房市觀點</h2><p>央行信用管制逐見成效，房市泡沫風險緩解，但公債利率衝破1.969%創16年新高，房貸成本上升已成定局。自住客拖延簽約只會承受更高利率，現在不是等待的時機。青埔外溢效應穩健推進，周邊重劃區房價漲幅溫和但紮實，資金面可尋求性價比機會。</p></div>
+  </main>
+  <div class="share">
+    <div class="fs" role="group" aria-label="字體大小">
+      <span class="lbl">字體</span>
+      <button type="button" data-fs="16">小</button>
+      <button type="button" data-fs="19">中</button>
+      <button type="button" data-fs="22">大</button>
+    </div>
+    <button class="primary" id="shareBtn">分享這則簡報</button>
+    <button id="copyBtn">複製連結</button>
+  </div>
+  <footer>
+    本頁由 AI 自動彙整公開新聞來源，僅供參考，不構成任何投資或交易建議。<br>
+    新聞著作權屬各原始媒體，標題連結可前往原文。<br>
+    青埔領航不動產　·　<a href="./">看其他日期</a>
+  </footer>
+</div>
+<script>
+(function () {
+  var url = location.href;
+  var title = document.title;
+
+  // 字級切換：19px（中）是預設，選擇存 localStorage，下次打開沿用
+  var btns = [].slice.call(document.querySelectorAll('.fs button'));
+  function applyFs(px, save) {
+    document.documentElement.style.fontSize = px + 'px';
+    btns.forEach(function (b) {
+      b.setAttribute('aria-pressed', String(+b.dataset.fs === px));
+    });
+    if (save) { try { localStorage.setItem('qp-fs', String(px)); } catch (e) {} }
+  }
+  var saved = 19;
+  try {
+    var v = parseFloat(localStorage.getItem('qp-fs'));
+    if (v >= 14 && v <= 24) saved = v;
+  } catch (e) {}
+  applyFs(saved, false);
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () { applyFs(+b.dataset.fs, true); });
+  });
+
+  document.getElementById('shareBtn').addEventListener('click', function () {
+    if (navigator.share) {
+      navigator.share({ title: title, text: title, url: url }).catch(function () {});
+    } else {
+      window.open('https://social-plugins.line.me/lineit/share?url=' + encodeURIComponent(url), '_blank');
+    }
+  });
+  document.getElementById('copyBtn').addEventListener('click', function () {
+    var btn = this;
+    navigator.clipboard.writeText(url).then(function () {
+      var old = btn.textContent;
+      btn.textContent = '已複製 ✓';
+      setTimeout(function () { btn.textContent = old; }, 1800);
+    });
+  });
+})();
+</script>
+</body>
+</html>
